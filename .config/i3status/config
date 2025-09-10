@@ -1,0 +1,80 @@
+general {
+        output_format = "i3bar"
+        colors = true
+        interval = 1
+        color_good = "#00FF00"
+        color_degraded = "#a84432"
+        color_bad = "#f2000c"
+}
+
+order += "disk /"
+order += "wireless wlan0"
+order += "ethernet _first_"
+order += "battery 0"
+order += "cpu_temperature 0"
+order += "memory"
+order += "cpu_usage"
+order += "tztime local"
+order += "volume master"
+wireless wlan0 {
+        format_up = "ᯤ: (%quality at %essid, %bitrate) %ip"
+        format_down = "ᯤ: down"
+}
+
+ethernet _first_ {
+        format_up = "🖧: %ip (%speed)"
+        format_down = "🖧: down"
+}
+
+battery 0 {
+        format = "%status %percentage %remaining %emptytime"
+        format_down = "No battery"
+        status_chr = "⚡"
+        status_bat = "🔋"
+        status_unk = "? UNK"
+        status_full = "☻ FULL"
+        status_idle = "☻ IDLE"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        threshold_type = "percentage"
+        low_threshold = 30
+}
+
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted" 
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+
+tztime local {
+        format = "🕒️%H:%M:%S %d-%m-%Y"
+		timezone = "Europe/Moscow"
+}
+
+cpu_usage {
+        format = "CPU: %usage"
+}
+
+cpu_temperature 0 {
+        format = "🌡️ %degrees °C"
+        format_above_threshold = "🔥 %degrees °C"
+        max_threshold = 70
+        path = "/sys/class/thermal/thermal_zone0/hwmon1/temp1_input"
+}
+
+memory {
+        format = "%used/%available"
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
+}
+
+disk "/" {
+        format = "Porn folder 💾: %used/%total"
+}
+
+read_file uptime {
+        path = "/proc/uptime"
+}

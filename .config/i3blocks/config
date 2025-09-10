@@ -1,0 +1,40 @@
+separator=false
+[disk]
+command=./disk.py "ZOV Folder"  
+format=json
+interval=5
+[weather]
+command=curl -Ss -H "Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3" 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+interval=60
+color=#A4C2F4
+[ifaces]
+command=./ifaces.py
+format=json
+interval=3
+
+[cpu_temp]
+command=./cpu_temp.py
+format=json
+interval=1
+
+[memory]
+command=./memory.py
+format=json
+interval=3
+
+[battery]
+command=./battery.py
+interval=5
+
+[time]
+command=date "+%T %a %d-%m-%Y"
+interval=1
+
+[volume]
+command=./volume.py
+format=json
+interval=1
+
+[language]
+command=./layout.py
+interval=1

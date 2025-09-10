@@ -1,0 +1,69 @@
+/* ~/.config/waybar/style.css */
+
+/* Global styles */
+* {
+    font-family: monospace;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+/* Waybar container */
+#waybar {
+    background: black;
+    
+}
+
+/* Workspaces module */
+#workspaces button {
+    padding: 0 8px;
+    color: #888888;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+}
+
+/* Active workspace */
+#workspaces button.active {
+    color: #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+/* Hover effect for workspaces */
+#workspaces button:hover {
+    color: #cccccc;
+    background: transparent;
+    border-bottom: 2px solid #cccccc;
+}
+
+/* Remove backgrounds for all modules */
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#network,
+#pulseaudio,
+#tray,
+#mode {
+    background: transparent;
+    padding: 0 8px;
+    color: #ffffff;
+}
+
+/* Optional: subtle hover effect for modules */
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#temperature:hover,
+#network:hover,
+#pulseaudio:hover,
+#tray:hover,
+#mode:hover {
+    color: #cccccc;
+}

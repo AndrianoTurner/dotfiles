@@ -1,0 +1,5 @@
+#!/bin/bash
+if [ $(hostname) != "precious" ] && [ $(hostname) != "pc-01" ]; then
+xrandr --output HDMI-3 --primary --mode 1920x1080 --rate 144.11
+xrandr --output HDMI-1 --rotate right
+fi

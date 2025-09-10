@@ -1,0 +1,128 @@
+#!/bin/bash
+
+# Prepare system for config
+# Intended for Arch-based systems
+# Exit on any error
+set -e
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+# Log file
+LOG_FILE="$HOME/yadm_bootstrap.log"
+
+# Function to log messages
+log() {
+  echo -e "$1" | tee -a "$LOG_FILE"
+}
+
+command_exists() {
+  command -v "$1" 2>&1
+}
+
+package_installed() {
+  pacman -Q "$1" 2>&1
+}
+
+if ! command_exists sudo; then
+  log "${RED}Error: sudo is required but not installed.${NC}"
+  exit 1
+fi
+
+# Check for pacman
+if ! command_exists pacman; then
+  log "${RED}Error: This script requires pacman (Arch-based system).${NC}"
+  exit 1
+fi
+# Running as root
+if [[ $EUID -ne 0 ]]; then
+  exec sudo /bin/bash "$0" "$@"
+fi
+log "Updating the system..."
+if pacman --noconfirm -Syu >>"$LOG_FILE" 2>&1; then
+  log "${GREEN}System updated successfully.${NC}"
+else
+  log "${RED}Error: Failed to update the system. Check $LOG_FILE for details.${NC}"
+  exit 1
+fi
+
+PACKAGES=(
+  base-devel
+  git
+  dunst
+  alacritty
+  tmux
+  network-manager-applet
+  brightnessctl
+  zsh
+  eza
+  zoxide
+  hyprland
+  hyprlock
+  hyprpaper
+  hypridle
+  wofi
+  7zip
+  gcc
+  sddm
+  dolphin
+  waybar
+  fzf
+  bluetui
+  wireguard-tools
+  xdg-desktop-portal-hyprland
+)
+
+log "Checking and installing dependencies..."
+for pkg in "${PACKAGES[@]}"; do
+  if package_installed "$pkg"; then
+    log "${GREEN}$pkg is already installed, skipping...${NC}"
+  else
+    log "Installing $pkg..."
+    if sudo pacman -S --noconfirm "$pkg" >>"$LOG_FILE" 2>&1; then
+      log "${GREEN}$pkg installed successfully.${NC}"
+    else
+      log "${RED}Error: Failed to install $pkg. Check $LOG_FILE for details.${NC}"
+      exit 1
+    fi
+  fi
+done
+
+log "Changing shell to ZSH"
+chsh -s /bin/zsh $USER
+#log "Installing oh-my-zsh"
+# this spawns a new shell
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+log "Unpacking wallpapers"
+(cd .config/wallpapers && 7z x wallpapers.7z && chown andriano:andriano *)
+
+# log "Setting wallpapers job"
+# cat <<EOF >"/etc/systemd/system/wallpaper-switcher.service"
+# [Unit]
+# Description=Switch Hyprland wallpaper randomly
+#
+# [Service]
+# Type=oneshot
+# ExecStart=/home/andriano/.config/wallpapers/wallpaper-change.sh
+# EOF
+#
+# cat <<EOF >"/etc/systemd/system/wallpaper-switcher.timer"
+# [Unit]
+# Description=Run wallpaper switcher
+#
+# [Timer]
+# OnBootSec=0min
+# OnUnitActiveSec=300
+# Unit=wallpaper-switcher.service
+#
+# [Install]
+# WantedBy=timers.target
+# EOF
+# systemctl enable --now wallpaper-switcher.timer || {
+#   log "RED" "Failed to enable wallpaper-switcher.timer."
+#   exit 1
+# }
+
+log "${GREEN}Bootstrap completed successfully!${NC}"
