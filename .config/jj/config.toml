@@ -1,0 +1,26 @@
+[user]
+name = "AndrianoTurner"
+email = "danya.shibaev@gmail.com"
+
+
+[signing]
+behavior = "own"
+backend = "ssh"
+key = "~/.ssh/github.pub"
+
+[[--scope]]
+--when.repositories = ["~/work"]
+[--scope.user]
+name = "Даниил Шибаев"
+email = "d.shibaev@madrigal.expert"
+
+[--scope.signing]
+behavior = "own"
+backend = "ssh"
+key = "~/.ssh/gitlab-work.pub"
+
+[ui]
+editor = "nvim"
+
+[git]
+push-new-bookmarks = true

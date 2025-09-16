@@ -26,5 +26,5 @@ alias dc="yadm commit"
 alias ds="yadm status"
 alias dp="yadm push"
 source $ZSH/oh-my-zsh.sh
-
+source <(COMPLETE=zsh jj)
 eval "$(zoxide init zsh)"

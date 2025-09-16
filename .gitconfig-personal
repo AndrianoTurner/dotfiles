@@ -1,0 +1,4 @@
+[user]
+    name = AndrianoTurner
+    email = danya.shibaev@gmail.com
+    signingkey = "~/.ssh/github.pub"

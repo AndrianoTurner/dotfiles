@@ -1,0 +1,4 @@
+[user]
+    name = Даниил Шибаев
+    email = d.shibaev@madrigal.expert
+    signingkey = "~/.ssh/gitlab-work.pub"

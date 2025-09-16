@@ -1,5 +1,10 @@
 [init]
 	DefaultBranch = main
+[includeIf "gitdir:~/work/"]
+    path = ~/.gitconfig-work
+
+[includeIf "gitdir:~/personal/"]
+    path = ~/.gitconfig-personal
 [user]
 	name = AndrianoTurner
 	email = danya.shibaev@gmail.com
@@ -47,3 +52,6 @@
 
 [rerere]
   enabled = true
+
+[gpg]
+  format = ssh
