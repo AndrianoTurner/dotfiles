@@ -1,0 +1,42 @@
+{
+  "auto_install_extensions": {
+    "html": true,
+    "dockerfile": true,
+    "docker-compose": true,
+    "toml": true,
+    "ruff": true,
+    "justfile": true,
+    "colored-zed-icons-theme": true,
+    "gitlab-ci-ls": true
+  },
+  "autosave": "on_focus_change",
+  "vim_mode": true,
+  "format_on_save": "on",
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+      "max_severity": "error"
+    }
+  },
+
+  "languages": {
+    "Python": {
+      "language_servers": [
+        // Disable basedpyright and enable Ty, and otherwise
+        // use the default configuration.
+        "ruff",
+        "basedpyright"
+      ]
+    }
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "True Dark"
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Colored Zed Icons Theme Light",
+    "dark": "Colored Zed Icons Theme Dark"
+  }
+}
