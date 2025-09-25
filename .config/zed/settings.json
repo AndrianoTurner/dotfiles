@@ -7,7 +7,9 @@
     "ruff": true,
     "justfile": true,
     "colored-zed-icons-theme": true,
-    "gitlab-ci-ls": true
+    "gitlab-ci-ls": true,
+    "ansible": true,
+    "basher": true
   },
   "autosave": "on_focus_change",
   "vim_mode": true,

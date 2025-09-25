@@ -1,0 +1,137 @@
+---
+- name: Configure the workstation
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Set timezone to Europe/Moscow
+      community.general.timezone:
+        name: Europe/Moscow
+      become: true
+
+    - name: Upgrade system
+      community.general.pacman:
+        upgrade: true
+        update_cache: true
+      become: true
+
+    - name: Install essential packages
+      community.general.pacman:
+        name:
+          - alacritty
+          - brightnessctl
+          - zoxide
+          - wofi
+          - p7zip
+          - dolphin
+          - bluetui
+          - base
+          - base-devel
+          - linux
+          - linux-firmware
+          - sudo
+          - networkmanager
+          - openssh
+          - nano
+          - pipewire
+          - man-db
+          - man-pages
+          - wget
+          - reflector
+          - telegram-desktop
+        state: latest
+      become: true
+
+    - name: Install hyprland packages
+      community.general.pacman:
+        name:
+          - hyprland
+          - hyprlock
+          - hyprpaper
+          - hypridle
+          - sddm
+          - xdg-desktop-portal-hyprland
+
+    - name: Install dev-packages
+      community.general.pacman:
+        name:
+          - base-devel
+          - git
+          - gcc
+          - tmux
+          - fzf
+          - zed
+          - neovim
+
+    - name: Install network-packages
+      community.general.pacman:
+        name:
+          - wireguard-tools
+          - network-manager-applet
+
+    - name: Install eye-candy packages
+      community.general.pacman:
+        name:
+          - zsh
+          - eza
+          - dunst
+          - waybar
+          - swww
+
+    - name: Install rust tools
+      community.general.pacman:
+        name:
+          - rustup
+          - rust-analyzer
+          - rust-bindgen
+        state: latest
+      become: true
+
+    - name: Install the stable toolchain
+      ansible.builtin.command: rustup default stable
+      changed_when: true
+
+    - name: Install rust components
+      ansible.builtin.command: rustup component add rust-src clippy rustfmt
+      changed_when: true
+
+    - name: Install some useful tools
+      community.general.pacman:
+        name:
+          - cargo-binstall
+          - cross
+          - cargo-deny
+          - cargo-edit
+          - cargo-flamegraph
+          - cargo-generate
+          - cargo-nextest
+          - cargo-watch
+          - sccache
+          - cargo-udeps
+      become: true
+
+    - name: Install yay
+      community.general.pacman:
+        name: yay
+        state: present
+      become: true
+
+    - name: Install yay packages
+      kewlfft.aur.aur:
+        state: present
+        use: yay
+        name:
+          - grimblast-git
+          - zen-browser-bin
+
+    - name: Enable sddm
+      ansible.builtin.systemd:
+        name: sddm
+        state: started
+        enabled: true
+      become: true
+
+    - name: Extract wallpapers
+      ansible.builtin.unarchive:
+        src: ~/.config/wallpapers/wallpapers.7z
+        dest: ~/.config/wallpapers/
+        creates: ~/.config/wallpapers/Jill.jpg
