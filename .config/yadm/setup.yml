@@ -50,6 +50,8 @@
           - hypridle
           - sddm
           - xdg-desktop-portal-hyprland
+        state: latest
+      become: true
 
     - name: Install dev-packages
       community.general.pacman:
@@ -61,12 +63,17 @@
           - fzf
           - zed
           - neovim
+          - jujutsu
+        state: latest
+      become: true
 
     - name: Install network-packages
       community.general.pacman:
         name:
           - wireguard-tools
           - network-manager-applet
+        state: latest
+      become: true
 
     - name: Install eye-candy packages
       community.general.pacman:
@@ -76,6 +83,9 @@
           - dunst
           - waybar
           - swww
+          - ttf-hack-nerd
+        state: latest
+      become: true
 
     - name: Install rust tools
       community.general.pacman:
@@ -110,7 +120,7 @@
       become: true
 
     - name: Install yay
-      community.general.pacman:
+      kewlfft.aur.aur:
         name: yay
         state: present
       become: true
@@ -122,6 +132,14 @@
         name:
           - grimblast-git
           - zen-browser-bin
+          - ttf-nerd-fonts-symbols
+          - ttf-nerd-fonts-symbols-common
+
+    - name: Extract wallpapers
+      ansible.builtin.unarchive:
+        src: ~/.config/wallpapers/wallpapers.7z
+        dest: ~/.config/wallpapers/
+        creates: ~/.config/wallpapers/Jill.jpg
 
     - name: Enable sddm
       ansible.builtin.systemd:
@@ -129,9 +147,3 @@
         state: started
         enabled: true
       become: true
-
-    - name: Extract wallpapers
-      ansible.builtin.unarchive:
-        src: ~/.config/wallpapers/wallpapers.7z
-        dest: ~/.config/wallpapers/
-        creates: ~/.config/wallpapers/Jill.jpg
