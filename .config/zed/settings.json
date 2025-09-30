@@ -6,7 +6,7 @@
     "toml": true,
     "ruff": true,
     "colored-zed-icons-theme": true,
-    "ansible": true,
+    "ansible": true
   },
   "autosave": "on_focus_change",
   "vim_mode": true,
@@ -27,6 +27,29 @@
         "basedpyright"
       ]
     }
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true
+          },
+          "closureReturnTypeHints": {
+            "enable": "always"
+          }
+        }
+      }
+    }
+  },
+
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true
   },
   "theme": {
     "mode": "dark",
