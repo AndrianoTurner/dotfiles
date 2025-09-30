@@ -1,3 +1,6 @@
+[user]
+	name = AndrianoTurner
+	email = danya.shibaev@gmail.com
 [init]
 	DefaultBranch = main
 [includeIf "gitdir:~/work/"]
@@ -5,9 +8,6 @@
 
 [includeIf "gitdir:~/personal/"]
     path = ~/.gitconfig-personal
-[user]
-	name = AndrianoTurner
-	email = danya.shibaev@gmail.com
 [core]
 	editor = nvim
 	whitespace = error
