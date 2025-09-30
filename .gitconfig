@@ -1,12 +1,9 @@
-[user]
-	name = AndrianoTurner
-	email = danya.shibaev@gmail.com
 [init]
 	DefaultBranch = main
-[includeIf "gitdir:~/work/"]
+[includeIf "gitdir:~/work/**/"]
     path = ~/.gitconfig-work
 
-[includeIf "gitdir:~/personal/"]
+[includeIf "gitdir:~/personal/**/"]
     path = ~/.gitconfig-personal
 [core]
 	editor = nvim

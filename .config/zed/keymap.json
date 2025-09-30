@@ -177,10 +177,11 @@
       "] c": "editor::GoToHunk",
       "[ c": "editor::GoToPreviousHunk",
       // Jump to diagnostic
+
       "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPreviousDiagnostic",
-      "] e": "editor::GoToDiagnostic",
-      "[ e": "editor::GoToPreviousDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic", 
+      "] e":  ["editor::GoToDiagnostic", { "severity": { "min": "error" } }],
+      "[ e": ["editor::GoToDiagnostic", { "severity": { "min": "error" } }],
       // Excerpts
       "] q": "editor::MoveToStartOfNextExcerpt",
       "[ q": "editor::MoveToStartOfExcerpt"

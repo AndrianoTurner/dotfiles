@@ -2,3 +2,9 @@
     name = AndrianoTurner
     email = danya.shibaev@gmail.com
     signingkey = "~/.ssh/github.pub"
+
+[commit]
+    gpgsign = true
+
+[gpg]
+    format = ssh
