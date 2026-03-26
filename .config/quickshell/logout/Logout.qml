@@ -3,6 +3,14 @@ import Quickshell
 
 ShellRoot {
 	LogoutMenu {
+
+		LogoutButton {
+			command: "hyprlock"
+			keybind: Qt.Key_R
+			text: "Lock"
+			icon: "lock"
+		}
+
 		LogoutButton {
 			command: "systemctl suspend"
 			keybind: Qt.Key_S
@@ -23,5 +31,6 @@ ShellRoot {
 			text: "Reboot"
 			icon: "reboot"
 		}
+
 	}
 }
