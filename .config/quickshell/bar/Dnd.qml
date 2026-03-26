@@ -7,8 +7,8 @@ Rectangle {
     color: ShellGlobals.materialColors.primarycontainer
     radius: 1000
 
-    implicitHeight: row.height + 16
-    implicitWidth: row.width + 32
+    implicitHeight: row.height + 8 
+    implicitWidth: row.width + 16
 
     MouseArea {
         onClicked: ShellGlobals.isDnd = !ShellGlobals.isDnd

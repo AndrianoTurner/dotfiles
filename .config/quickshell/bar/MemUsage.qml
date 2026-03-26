@@ -8,8 +8,8 @@ Rectangle {
     color: ShellGlobals.materialColors.primary
     radius: 1000
 
-    implicitHeight: row.height + 16
-    implicitWidth: row.width + 32
+    implicitHeight: row.height + 8
+    implicitWidth: row.width + 16
 
     property int memUsage: 0
 

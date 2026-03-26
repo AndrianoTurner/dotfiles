@@ -1,9 +1,10 @@
 binds {
     // ── Apps ──────────────────────────────────────────────────────────────
     Mod+Return      { spawn "alacritty"; }
-    Mod+R           { spawn "wofi" "--show" "drun"; }
+    Mod+R repeat=false { spawn "vicinae" "toggle"; }
     Mod+E           { spawn "dolphin"; }
-    Mod+Shift+L     { spawn "swaylock"; }
+    Mod+X { spawn "sh" "-c" "qs -c ~/.config/quickshell/ ipc call notifications toggle"; }
+    Mod+Alt+L { spawn "sh" "-c" "qs -c ~/.config/quickshell/ ipc call logout toggle"; }
 
     // ── Window management ─────────────────────────────────────────────────
     Mod+Q           { close-window; }
@@ -29,14 +30,14 @@ binds {
     Mod+Down  { focus-window-down; }
 
     // ── Move ──────────────────────────────────────────────────────────────
-    Mod+Ctrl+H     { move-column-left; }
-    Mod+Ctrl+L     { move-column-right; }
-    Mod+Ctrl+K     { move-window-up; }
-    Mod+Ctrl+J     { move-window-down; }
-    Mod+Ctrl+Left  { move-column-left; }
-    Mod+Ctrl+Right { move-column-right; }
-    Mod+Ctrl+Up    { move-window-up; }
-    Mod+Ctrl+Down  { move-window-down; }
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+L     { move-column-right; }
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+J     { move-window-down; }
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+Up    { move-window-up; }
+    Mod+Shift+Down  { move-window-down; }
 
     // ── Workspaces ────────────────────────────────────────────────────────
     Mod+1 { focus-workspace 1; }
@@ -59,19 +60,19 @@ binds {
     Mod+Page_Up         { focus-workspace-up; }
 
     // ── Monitors ──────────────────────────────────────────────────────────
-    Mod+Shift+H { focus-monitor-left; }
-    Mod+Shift+L { focus-monitor-right; }
-    Mod+Shift+K { focus-monitor-up; }
-    Mod+Shift+J { focus-monitor-down; }
+    Mod+Ctrl+H { focus-monitor-left; }
+    Mod+Ctrl+L { focus-monitor-right; }
+    Mod+Ctrl+K { focus-monitor-up; }
+    Mod+Ctrl+J { focus-monitor-down; }
 
     Mod+Shift+Ctrl+H { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+L { move-column-to-monitor-right; }
 
     // ── Screenshots ───────────────────────────────────────────────────────
-    Print           { screenshot; }
-    Ctrl+Print      { screenshot-screen; }
-    Alt+Print       { screenshot-window; }
-    Mod+Shift+S     { screenshot; }
+    Print       { screenshot; }
+    Ctrl+Print  { screenshot-screen; }
+    Alt+Print   { screenshot-window; }
+    Mod+Shift+S { screenshot; }
 
     // ── Session ───────────────────────────────────────────────────────────
     Mod+Shift+E                       { quit; }

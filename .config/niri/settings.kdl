@@ -14,17 +14,35 @@ input {
         tap
         natural-scroll
     }
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 layout {
-    gaps 0
-    default-column-width { proportion 0.5; }
-    focus-ring {
-        width 1
-        active-color "#43a9e0"
-        inactive-color "#595959"
+  gaps 8
+    center-focused-column "never"
+    always-center-single-column
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
     }
-    border { off }
+    default-column-width { proportion 0.45; }
+    focus-ring {
+      on
+      width 4
+      active-color "#eab676"
+      inactive-color "#282828"
+      urgent-color "#9b0000"
+    }
+    border { off; }
+    struts {}
+}
+
+output "LG Electronics MP59G 0x01010101" {
+  mode "1920x1080"
+  scale 1
+  background-color "#282828"
 }
 
 cursor {}

@@ -11,7 +11,7 @@ PanelWindow {
         left: true
         right: true
     }
-    implicitHeight: rowLayout.implicitHeight + 8
+    implicitHeight: rowLayout.implicitHeight + 2
     color: "transparent"
 
     Menu {
@@ -34,7 +34,7 @@ PanelWindow {
         
         anchors.leftMargin: 16
         anchors.rightMargin: 16
-        anchors.topMargin: 8
+        anchors.topMargin: 2
         
         spacing: 8
 
