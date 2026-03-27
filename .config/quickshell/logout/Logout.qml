@@ -6,7 +6,7 @@ ShellRoot {
 
 		LogoutButton {
 			command: "hyprlock"
-			keybind: Qt.Key_R
+			keybind: Qt.Key_L
 			text: "Lock"
 			icon: "lock"
 		}
