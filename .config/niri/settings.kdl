@@ -1,4 +1,16 @@
 
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
+
+prefer-no-csd
+
 input {
     keyboard {
         xkb {

@@ -44,13 +44,17 @@
           - dmidecode
           - inxi
           - dnsmasq
+          - niri
+          - xdg-desktop-portal-kde
+          - copyq
+          - fish
+
         state: latest
       become: true
 
     - name: Install hyprland packages
       community.general.pacman:
         name:
-          - hyprland
           - hyprlock
           - hyprpaper
           - hypridle
@@ -84,15 +88,14 @@
     - name: Install eye-candy packages
       community.general.pacman:
         name:
-          - zsh
           - eza
-          - dunst
-          - waybar
+          - quickshell
           - swww
           - ttf-hack-nerd
           - ttf-hack
           - ttf-dejavu
           - noto-fonts
+          - starship
         state: latest
       become: true
 
@@ -116,15 +119,7 @@
     - name: Install some useful tools
       community.general.pacman:
         name:
-          - cargo-binstall
-          - cross
-          - cargo-deny
-          - cargo-edit
           - cargo-flamegraph
-          - cargo-generate
-          - cargo-nextest
-          - cargo-watch
-          - sccache
           - cargo-udeps
       become: true
 
@@ -164,10 +159,10 @@
         state: present
         use: yay
         name:
-          - grimblast-git
           - zen-browser-bin
           - ttf-nerd-fonts-symbols
           - ttf-nerd-fonts-symbols-common
+          - vicinae-bin
       become_user: aur_builder
       become: true
 
@@ -176,22 +171,11 @@
         cmd: 7z x "~/.config/wallpapers/wallpapers.7z" -o"~/.config/wallpapers/" -y
         creates: "~/.config/wallpapers/Jill.jpg"
 
-    - name: Check if Oh My Zsh is already installed
-      stat:
-        path: "~/.oh-my-zsh"
-      register: oh_my_zsh_dir
-
-    - name: Install Oh My Zsh
-      shell: |
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-      when: not oh_my_zsh_dir.stat.exists
-      register: oh_my_zsh_install
-
-    - name: Set Zsh as default shell for the user
-      user:
+    - name: Set fish as default shell for the user
+      become: true
+      ansible.builtin.user:
         name: "{{ ansible_user_id }}"
-        shell: /bin/zsh
-      when: oh_my_zsh_install.changed
+        shell: /usr/bin/fish
 
     - name: Enable sddm
       ansible.builtin.systemd:
