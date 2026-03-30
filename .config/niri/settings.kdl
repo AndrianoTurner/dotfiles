@@ -57,5 +57,22 @@ output "LG Electronics MP59G 0x01010101" {
   background-color "#282828"
 }
 
+
+output "Xiaomi Corporation Mi Monitor 5790010008157" {
+  mode "1920x1080@180.00"
+  scale 1
+  background-color "#282828"
+
+  position x=-1920 y=0
+}
+
+output "Dell Inc. DELL S2421HS F5P2BP3" {
+  mode "1920x1080@74.973"
+  scale 1
+
+}
+
+
+
 cursor {}
 animations {}
