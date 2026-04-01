@@ -12,7 +12,7 @@ return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim", opts = { transparent_mode = true }, },
 
-  { "mason-org/mason.nvim",     opts = { ensure_installed = { "lua-language-server", "dotenv-linter", "tinymist", "prettypst", "ruff", "pyright", "stylua", "luaformatter" }, }, },
+--  { "mason-org/mason.nvim",     opts = { ensure_installed = { "lua-language-server", "dotenv-linter", "tinymist", "prettypst", "ruff", "pyright", "stylua", "luaformatter" }, }, },
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
