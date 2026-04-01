@@ -45,7 +45,7 @@
         "backgroundOpacity": 0.93,
         "barType": "floating",
         "capsuleColorKey": "none",
-        "capsuleOpacity": 1,
+        "capsuleOpacity": 0.62,
         "contentPadding": 2,
         "density": "default",
         "displayMode": "always_visible",
@@ -64,7 +64,7 @@
         "mouseWheelAction": "none",
         "mouseWheelWrap": true,
         "outerCorners": true,
-        "position": "left",
+        "position": "top",
         "reverseScroll": false,
         "rightClickAction": "controlCenter",
         "rightClickCommand": "",
@@ -151,6 +151,9 @@
             ],
             "right": [
                 {
+                    "id": "plugin:network-manager-vpn"
+                },
+                {
                     "blacklist": [
                     ],
                     "chevronColor": "none",
@@ -235,7 +238,8 @@
         "monitorForColors": "",
         "predefinedScheme": "Gruvbox",
         "schedulingMode": "off",
-        "useWallpaperColors": true
+        "syncGsettings": true,
+        "useWallpaperColors": false
     },
     "controlCenter": {
         "cards": [
@@ -400,6 +404,7 @@
         "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": false,
+        "smoothScrollEnabled": true,
         "telemetryEnabled": false
     },
     "hooks": {
@@ -443,7 +448,6 @@
         "weatherShowEffects": true
     },
     "network": {
-        "airplaneModeEnabled": false,
         "bluetoothAutoConnect": true,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
@@ -593,9 +597,9 @@
     },
     "ui": {
         "boxBorderEnabled": false,
-        "fontDefault": "Sans Serif",
+        "fontDefault": "Hack",
         "fontDefaultScale": 1,
-        "fontFixed": "monospace",
+        "fontFixed": "JetBrains Mono",
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 0.93,
         "panelsAttachedToBar": true,
@@ -607,7 +611,7 @@
     },
     "wallpaper": {
         "automationEnabled": true,
-        "directory": "/home/andriano/Pictures/Wallpapers",
+        "directory": "/home/andriano/.config/wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
@@ -615,6 +619,7 @@
         "fillColor": "#000000",
         "fillMode": "crop",
         "hideWallpaperFilenames": false,
+        "linkLightAndDarkWallpapers": true,
         "monitorDirectories": [
             {
                 "directory": "/home/andriano/.config/wallpapers",
@@ -636,7 +641,7 @@
         "showHiddenFiles": false,
         "skipStartupTransition": false,
         "solidColor": "#1a1a2e",
-        "sortOrder": "name",
+        "sortOrder": "date_asc",
         "transitionDuration": 1500,
         "transitionEdgeSmoothness": 0.05,
         "transitionType": [
@@ -650,7 +655,7 @@
         "useOriginalImages": false,
         "useSolidColor": false,
         "useWallhaven": false,
-        "viewMode": "single",
+        "viewMode": "browse",
         "wallhavenApiKey": "",
         "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
